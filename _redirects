@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects: relative paths only.
+# www -> apex and http -> https are a Redirect Rule on the zone, not here.
+/index.html / 301
+/privacy/ /privacy-policy/ 301

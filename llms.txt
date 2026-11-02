@@ -1,0 +1,23 @@
+# Zuoyu Garment
+
+> Denim OEM/ODM manufacturer based in Dayong, Zhongshan, Guangdong, China. Custom jeans, denim jackets, denim skirts and denim dresses for brand owners and importers in Europe and North America. Minimum order {{MOQ}} pieces per style per colour. Samples in {{SAMPLE_LEAD}} days, bulk in {{PROD_LEAD}} days, FOB {{FOB_PORT}}. OEKO-TEX Standard 100 certificate {{CERT_OEKO_NO}}; SMETA 4-pillar audited. Does not hold GRS, amfori BSCI or ISO 9001 and does not claim them.
+
+## Products
+- [Jeans](https://zuoyugarment.com/jeans/): five-pocket, straight, slim, relaxed, wide-leg and utility jeans in rigid, comfort-stretch and high-stretch denim. From {{PRICE_JEANS}} per piece.
+- [Denim jackets and skirts](https://zuoyugarment.com/denim-jackets-and-skirts/): trucker, overshirt, chore jackets and denim skirts, including coordinated sets. From {{PRICE_JACKETS}}.
+- [Denim dresses](https://zuoyugarment.com/denim-dresses/): shirt dresses, pinafores, slip-bib and tailored denim dresses. From {{PRICE_DRESSES}}.
+
+## Factory and evidence
+- [Factory and certifications](https://zuoyugarment.com/factory-certifications/): location, capacity, OEKO-TEX and SMETA references, and the list of certifications not held.
+- [Capabilities](https://zuoyugarment.com/capabilities/): what runs in-house (pattern, sample room, cutting, sewing, laundry, QC) and what is outsourced within the Dayong cluster.
+- [Cases](https://zuoyugarment.com/cases/): anonymised brief, constraint and outcome for three orders.
+
+## Buying information
+- [Buyer FAQ](https://zuoyugarment.com/faq/): MOQ, price bands, lead times, payment terms, FOB and certification answers.
+- [Denim glossary](https://zuoyugarment.com/denim-glossary/): ounce weight, sanforised, laser and ozone wash, tech pack, AQL, MOQ, FOB, and what OEKO-TEX and SMETA actually certify.
+- [Contact](https://zuoyugarment.com/contact/): quotation request form, email, WhatsApp, factory address.
+
+## Notes
+- Contact: {{EMAIL}} · WhatsApp {{WHATSAPP}} · {{PHONE}}
+- Address: {{ADDRESS_EN}}, Zhongshan, Guangdong, China
+- Pricing is indicative and FOB {{FOB_PORT}}; a costed quotation is issued against a tech pack or reference sample.
