@@ -1,0 +1,68 @@
+name: Publish article from issue
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: publish-article
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: contains(github.event.issue.labels.*.name, 'publish') || startsWith(github.event.issue.title, '[Article]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build the article from the issue form
+        id: build
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python scripts/publish.py
+
+      - name: Commit and push
+        if: success()
+        run: |
+          git config user.name "zuoyu-publisher"
+          git config user.email "publisher@zuoyugarment.com"
+          git add blog sitemap.xml
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "content: publish article ${{ steps.build.outputs.slug }}"
+            git push
+          fi
+
+      - name: Comment the live URL on the issue
+        if: success()
+        uses: actions/github-script@v7
+        env:
+          LIVE_URL: ${{ steps.build.outputs.url }}
+        with:
+          script: |
+            const url = process.env.LIVE_URL;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Published ✅\n\n${url}\n\nThe site rebuilds automatically in about a minute. The page is also queued for IndexNow (Bing).`
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: "closed"
+            });
