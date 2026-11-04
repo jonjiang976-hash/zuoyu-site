@@ -1,0 +1,71 @@
+name: Publish an article
+description: Fill in this form — the site builds, validates and publishes itself.
+title: "[Article] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill the fields below and press **Submit new issue**.
+        An automation will build the page, update the sitemap and the guides index, validate the structured data, and reply with the live URL.
+        If something is wrong it will comment what to fix — nothing goes live until it passes.
+  - type: input
+    id: headline
+    attributes:
+      label: Article title (English)
+      description: Used as the H1 and in search results. Keep it specific.
+      placeholder: "Custom Denim Jacket Manufacturer: What MOQ 150 Actually Means"
+    validations:
+      required: true
+  - type: input
+    id: slug
+    attributes:
+      label: URL slug (optional)
+      description: lowercase-with-dashes. Leave empty to generate it from the title.
+      placeholder: "custom-denim-jacket-moq"
+  - type: input
+    id: description
+    attributes:
+      label: Meta description
+      description: 120–165 characters. This is what appears under the title in search results.
+      placeholder: "MOQ 150 pcs per style per colour: what it covers, what it blocks, and how to plan a first denim jacket collection."
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: Small label above the title.
+      placeholder: "Buyer guide"
+  - type: textarea
+    id: body
+    attributes:
+      label: Article body (Markdown)
+      description: |
+        The FIRST paragraph becomes the "short answer" box — write it as a direct answer.
+        Use ## for section headings, - for bullets, and pipe tables for facts.
+      placeholder: |
+        Our minimum order is 150 pieces per style per colour. One style in one colour is 150 pieces; two colours start at 300.
+
+        ## What the minimum covers
+
+        | 1 style × 1 colour | 150 pcs |
+        | 1 style × 2 colours | 300 pcs |
+
+        - Fabric minimums
+        - Cutting efficiency
+    validations:
+      required: true
+  - type: textarea
+    id: faq
+    attributes:
+      label: FAQ (optional)
+      description: One question per line, in the form "Question | Answer". Becomes FAQPage structured data.
+      placeholder: |
+        Can I split the 150 pieces across two colours? | Yes, but the minimum applies per colour: two colours start at 300 pieces.
+        Is the sample fee credited? | Yes, USD 100 per style is credited against the bulk invoice.
+  - type: input
+    id: date
+    attributes:
+      label: Publish date (optional)
+      description: YYYY-MM-DD. Leave empty for today.
+      placeholder: "2026-11-04"
