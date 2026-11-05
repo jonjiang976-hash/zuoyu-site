@@ -36,7 +36,24 @@ jobs:
 
       - name: Apply a repo-level patch
         if: startsWith(github.event.issue.title, '[Patch]')
-        run: python scripts/patch_certification.py
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          case "$ISSUE_TITLE" in
+            *"product pages"*)
+              echo "running add_product_pages.py"
+              python scripts/add_product_pages.py
+              ;;
+            *"certification"*)
+              echo "running patch_certification.py"
+              python scripts/patch_certification.py
+              ;;
+            *)
+              echo "No script matches this patch title: $ISSUE_TITLE"
+              echo "Use '[Patch] add product pages' or '[Patch] certification correction'."
+              exit 1
+              ;;
+          esac
 
       - name: Build the article from the issue form
         id: build
