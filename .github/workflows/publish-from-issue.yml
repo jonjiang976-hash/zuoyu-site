@@ -14,10 +14,11 @@ concurrency:
 
 jobs:
   publish:
-    # Trigger if ANY of these is true: the issue form fields are in the body,
-    # the title has the [Article] prefix, or a "publish" label is set.
-    # The body check is the robust one — it survives a rewritten title.
+    # Article: the form fields are present in the body, or the title has the
+    # [Article] prefix, or the "publish" label is set.
+    # Patch: title starts with "[Patch]" — runs a repo-level correction instead.
     if: >-
+      startsWith(github.event.issue.title, '[Patch]') ||
       contains(github.event.issue.body, '### Article title') ||
       startsWith(github.event.issue.title, '[Article]') ||
       contains(github.event.issue.labels.*.name, 'publish')
@@ -33,8 +34,13 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Apply a repo-level patch
+        if: startsWith(github.event.issue.title, '[Patch]')
+        run: python scripts/patch_certification.py
+
       - name: Build the article from the issue form
         id: build
+        if: ${{ !startsWith(github.event.issue.title, '[Patch]') }}
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: python scripts/publish.py
@@ -44,27 +50,42 @@ jobs:
         run: |
           git config user.name "zuoyu-publisher"
           git config user.email "publisher@zuoyugarment.com"
-          git add blog sitemap.xml
+          git add -A
           if git diff --cached --quiet; then
             echo "nothing to commit"
           else
-            git commit -m "content: publish article ${{ steps.build.outputs.slug }}"
+            git commit -m "content: ${{ startsWith(github.event.issue.title, '[Patch]') && 'apply certification correction' || format('publish article {0}', steps.build.outputs.slug) }}"
             git push
           fi
 
-      - name: Comment the live URL on the issue
+      - name: Ping IndexNow for the published article
+        if: ${{ success() && !startsWith(github.event.issue.title, '[Patch]') }}
+        env:
+          LIVE_URL: ${{ steps.build.outputs.url }}
+        run: |
+          curl -s -o /dev/null -w "IndexNow HTTP %{http_code}\n" \
+            -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"zuoyugarment.com\",\"key\":\"f113849727cee53f9d475e0db2b50adf\",\"keyLocation\":\"https://zuoyugarment.com/f113849727cee53f9d475e0db2b50adf.txt\",\"urlList\":[\"$LIVE_URL\"]}" \
+            || echo "IndexNow ping failed (non-blocking)"
+
+      - name: Comment on the issue
         if: success()
         uses: actions/github-script@v7
         env:
           LIVE_URL: ${{ steps.build.outputs.url }}
+          IS_PATCH: ${{ startsWith(github.event.issue.title, '[Patch]') }}
         with:
           script: |
-            const url = process.env.LIVE_URL;
+            const isPatch = process.env.IS_PATCH === 'true';
+            const body = isPatch
+              ? `Patch applied ✅\n\nFiles were corrected and committed. Cloudflare rebuilds in about a minute.`
+              : `Published ✅\n\n${process.env.LIVE_URL}\n\nThe site rebuilds automatically in about a minute. The URL is also queued for IndexNow (Bing).`;
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `Published ✅\n\n${url}\n\nThe site rebuilds automatically in about a minute. The URL is also queued for IndexNow (Bing).`
+              body
             });
             await github.rest.issues.update({
               owner: context.repo.owner,
@@ -82,5 +103,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `❌ Publish failed. Open the **Actions** tab → this run → the failing step to see the reason.\n\nMost common causes:\n- **Settings → Actions → General → Workflow permissions** is not set to **Read and write**\n- A required field is empty, or the meta description is over 165 characters`
+              body: `❌ Failed. Open **Actions** → this run → the failing step for the reason.\n\nMost common cause: **Settings → Actions → General → Workflow permissions** is not set to **Read and write**.`
             });
