@@ -369,3 +369,17 @@ dd{margin:.2rem 0 0;color:var(--ink-2)}
   section{padding:1rem 0;break-inside:avoid}
   .hero{padding:1rem 0}
 }
+/* ------------------------------------------------------------------
+   移动端导航修复：让 8 个导航项在窄屏下横向滑动可达
+   （Guides 是第 6 项，窄屏时原本会被挤出右边缘）
+   用法：粘贴到 assets/style.css 的最末尾，保存即可。
+   ------------------------------------------------------------------ */
+@media (max-width: 700px){
+  html,body{overflow-x:hidden}
+  .site-head .wrap{flex-wrap:wrap;gap:.45rem .9rem}
+  .nav{flex:1 1 100%;width:100%;min-width:0;flex-wrap:nowrap;overflow-x:auto;
+       gap:.9rem;font-size:.78rem;line-height:1.25;padding:.1rem 0 .25rem;
+       -webkit-overflow-scrolling:touch}
+  .nav a{white-space:nowrap;padding:.2rem 0}
+  .head-cta{order:3}
+}
