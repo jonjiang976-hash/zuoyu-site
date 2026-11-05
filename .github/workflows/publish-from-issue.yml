@@ -48,9 +48,13 @@ jobs:
               echo "running patch_certification.py"
               python scripts/patch_certification.py
               ;;
+            *"brand"*)
+              echo "running brand_update.py"
+              python scripts/brand_update.py
+              ;;
             *)
               echo "No script matches this patch title: $ISSUE_TITLE"
-              echo "Use '[Patch] add product pages' or '[Patch] certification correction'."
+              echo "Use '[Patch] add product pages', '[Patch] certification correction' or '[Patch] brand logo and story'."
               exit 1
               ;;
           esac
