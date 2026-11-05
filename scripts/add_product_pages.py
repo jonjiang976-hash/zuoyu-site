@@ -354,6 +354,44 @@ def main():
     else:
         print("home page: shirts card already present")
 
+    # every page gets the Guides link in the header nav and the footer list —
+    # it was only ever added to index.html, so inner pages had no way in.
+    nav_added = 0
+    foot_added = 0
+    for dp, _, fs in os.walk(ROOT):
+        for f in fs:
+            if not f.endswith(".html"):
+                continue
+            p = os.path.join(dp, f)
+            if "/.git/" in p.replace("\\", "/"):
+                continue
+            s = rd(p)
+            original = s
+
+            m = re.search(r'(<nav class="nav"[^>]*>)(.*?)(</nav>)', s, re.S)
+            if m and "/blog/" not in m.group(2):
+                inner = m.group(2)
+                faq = re.search(r'(\n[ \t]*)(<a href="/faq/"[^>]*>FAQ</a>)', inner)
+                if faq:
+                    inner = inner.replace(
+                        faq.group(2),
+                        faq.group(2) + faq.group(1) + '<a href="/blog/">Guides</a>', 1)
+                else:
+                    inner = inner.rstrip() + '\n    <a href="/blog/">Guides</a>\n  '
+                s = s[:m.start(2)] + inner + s[m.end(2):]
+                nav_added += 1
+
+            if '<li><a href="/blog/">Guides</a></li>' not in s:
+                before = s
+                s = s.replace('<li><a href="/faq/">Buyer FAQ</a></li>',
+                              '<li><a href="/faq/">Buyer FAQ</a></li>\n    '
+                              '<li><a href="/blog/">Guides</a></li>', 1)
+                if s != before:
+                    foot_added += 1
+            if s != original:
+                wr(p, s)
+    print("nav Guides added on", nav_added, "pages | footer Guides added on", foot_added, "pages")
+
     print("done:", ", ".join(created))
     return 0
 
