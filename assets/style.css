@@ -383,3 +383,14 @@ dd{margin:.2rem 0 0;color:var(--ink-2)}
   .nav a{white-space:nowrap;padding:.2rem 0}
   .head-cta{order:3}
 }
+
+/* --- brand: logo in header/footer and the about-page story --- */
+.brand-mark img{display:block}
+.story{display:grid;grid-template-columns:210px 1fr;gap:clamp(1.4rem,3vw,3rem);align-items:start}
+.story-logo{width:100%;max-width:210px;height:auto;margin:0}
+.story blockquote{margin:1.6rem 0 1.2rem;padding:.2rem 0 .2rem 1rem;border-left:2px solid var(--copper);
+  font-family:var(--serif);font-size:1.12rem;line-height:1.45;color:var(--ink)}
+@media (max-width:760px){
+  .story{grid-template-columns:1fr}
+  .story-figure{max-width:150px;margin:0}
+}
