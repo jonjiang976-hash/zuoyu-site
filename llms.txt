@@ -1,6 +1,6 @@
 # Zuoyu Garment
 
-> Denim OEM/ODM manufacturer based in Dayong, Zhongshan, Guangdong, China. Custom jeans, denim jackets, denim skirts and denim dresses for brand owners and importers in Europe and North America. Minimum order {{MOQ}} pieces per style per colour. Samples in {{SAMPLE_LEAD}} days, bulk in {{PROD_LEAD}} days, FOB {{FOB_PORT}}. OEKO-TEX Standard 100 certificate {{CERT_OEKO_NO}}; SMETA 4-pillar audited. Does not hold GRS, amfori BSCI or ISO 9001 and does not claim them.
+> Denim OEM/ODM manufacturer based in Dayong, Zhongshan, Guangdong, China. Custom jeans, denim jackets, denim skirts and denim dresses for brand owners and importers in Europe and North America. Minimum order {{MOQ}} pieces per style per colour. Samples in {{SAMPLE_LEAD}} days, bulk in {{PROD_LEAD}} days, FOB {{FOB_PORT}}. SMETA audited (Sedex reference ZAA600231250), US CPSIA GCC (BYT26080342) and RoHS (MTL24120600306R01). Does not hold OEKO-TEX, GRS, amfori BSCI or ISO 9001 and does not claim them.
 
 ## Products
 - [Jeans](https://zuoyugarment.com/jeans/): five-pocket, straight, slim, relaxed, wide-leg and utility jeans in rigid, comfort-stretch and high-stretch denim. From {{PRICE_JEANS}} per piece.
@@ -8,7 +8,7 @@
 - [Denim dresses](https://zuoyugarment.com/denim-dresses/): shirt dresses, pinafores, slip-bib and tailored denim dresses. From {{PRICE_DRESSES}}.
 
 ## Factory and evidence
-- [Factory and certifications](https://zuoyugarment.com/factory-certifications/): location, capacity, OEKO-TEX and SMETA references, and the list of certifications not held.
+- [Factory and certifications](https://zuoyugarment.com/factory-certifications/): location, capacity, SMETA/GCC/RoHS references, and the list of certifications not held.
 - [Capabilities](https://zuoyugarment.com/capabilities/): what runs in-house (pattern, sample room, cutting, sewing, laundry, QC) and what is outsourced within the Dayong cluster.
 - [Cases](https://zuoyugarment.com/cases/): anonymised brief, constraint and outcome for three orders.
 
