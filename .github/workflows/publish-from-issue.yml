@@ -38,26 +38,28 @@ jobs:
         if: startsWith(github.event.issue.title, '[Patch]')
         env:
           ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
-          case "$ISSUE_TITLE" in
-            *"product pages"*)
-              echo "running add_product_pages.py"
-              python scripts/add_product_pages.py
-              ;;
-            *"certification"*)
-              echo "running patch_certification.py"
-              python scripts/patch_certification.py
-              ;;
-            *"brand"*)
-              echo "running brand_update.py"
-              python scripts/brand_update.py
-              ;;
-            *)
-              echo "No script matches this patch title: $ISSUE_TITLE"
-              echo "Use '[Patch] add product pages', '[Patch] certification correction' or '[Patch] brand logo and story'."
-              exit 1
-              ;;
-          esac
+          set -e
+          # Explicit marker wins: put a line "SCRIPT: some_script.py" in the issue.
+          chosen=""
+          marker=$(printf '%s\n' "$ISSUE_BODY" | grep -oE 'SCRIPT:[[:space:]]*[A-Za-z0-9_.-]+' | head -1 | sed -E 's/SCRIPT:[[:space:]]*//' || true)
+          if [ -n "$marker" ] && [ -f "scripts/$marker" ]; then
+            chosen="scripts/$marker"
+          else
+            case "$ISSUE_TITLE" in
+              *"product pages"*) chosen="scripts/add_product_pages.py" ;;
+              *"certification"*) chosen="scripts/patch_certification.py" ;;
+              *"brand"*)         chosen="scripts/brand_update.py" ;;
+            esac
+          fi
+          if [ -z "$chosen" ]; then
+            echo "No script matched this patch."
+            echo "Add a line 'SCRIPT: <file>.py' to the issue body, or use a known title."
+            exit 1
+          fi
+          echo "running $chosen"
+          python "$chosen"
 
       - name: Build the article from the issue form
         id: build
