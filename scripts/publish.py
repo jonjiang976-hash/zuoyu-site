@@ -102,6 +102,27 @@ def md_to_html(md):
             i += 1
             continue
 
+        # flattened table from a lossy paste: "| a | b | | c | d | ..."
+        if stripped.startswith("|") and re.search(r"\|\s*\|", stripped[1:]):
+            close_list()
+            body_txt = stripped[1:] if stripped.startswith("|") else stripped
+            if body_txt.endswith("|"):
+                body_txt = body_txt[:-1]
+            rows = []
+            for seg in re.split(r"\|\s*\|", body_txt):
+                cells = [c.strip() for c in seg.split("|") if c.strip()]
+                if cells:
+                    rows.append(cells)
+            if rows:
+                out.append('<table class="fact-table">')
+                out.append("<tbody>")
+                for row in rows:
+                    out.append("<tr><th>%s</th><td>%s</td></tr>"
+                               % (inline(row[0]), inline(" — ".join(row[1:]))))
+                out.append("</tbody></table>")
+            i += 1
+            continue
+
         # markdown table (separator row optional)
         if stripped.startswith("|") and i + 1 < len(lines) and lines[i + 1].strip().startswith("|"):
             close_list()
@@ -194,12 +215,7 @@ def build_main():
     lead_html = md_to_html(lead)
     body_html = md_to_html(rest)
 
-    faqs = []
-    for line in env("FAQ").splitlines():
-        if "|" in line:
-            q, a = [x.strip() for x in line.split("|", 1)]
-            if q and a:
-                faqs.append((q, a))
+    faqs = normalize_faq(env("FAQ"))
     faq_html = ""
     faq_json = ""
     if faqs:
@@ -401,31 +417,58 @@ FIELDS = {
 }
 
 
+def _label_of(line):
+    """Return the target env name if this line is a section label."""
+    t = line.strip().strip("#").strip().rstrip(":").strip()
+    if not t or len(t) > 40 or t.endswith((".", "!", "?", ",")):
+        return None
+    low = t.lower()
+    for needle, env_name in FIELDS.items():
+        if low == needle or low.startswith(needle):
+            return env_name
+    return None
+
+
 def parse_issue_body(body):
-    """Split the issue form into {label: value}."""
+    """Split the issue body into fields, with or without '###' headings.
+
+    Works for both a GitHub issue-form submission and a plain-text paste where
+    every '#' was lost (which is what happens when the text is copied from a
+    rendered preview).
+    """
     sections = {}
     current = None
     buf = []
     for line in body.replace("\r", "").split("\n"):
-        m = re.match(r"^###\s+(.*?)\s*$", line)
-        if m:
-            if current is not None:
+        key = _label_of(line)
+        if key:
+            if current is not None and current not in sections:
                 sections[current] = "\n".join(buf).strip()
-            current = m.group(1).strip()
+            current = key
             buf = []
         elif current is not None:
             buf.append(line)
-    if current is not None:
+    if current is not None and current not in sections:
         sections[current] = "\n".join(buf).strip()
+    return sections
 
-    mapped = {}
-    for label, value in sections.items():
-        key = label.lower()
-        for needle, env_name in FIELDS.items():
-            if needle in key:
-                mapped[env_name] = value
-                break
-    return mapped
+
+def normalize_faq(text):
+    """Return [(question, answer)] even if the whole FAQ arrived as one line."""
+    text = " ".join(x.strip() for x in (text or "").splitlines() if x.strip())
+    if not text:
+        return []
+    qpat = re.compile(r"(?:^|(?<=\. )|(?<=\| ))([A-Z][^?|.]{4,110}\?)")
+    cands = [m for m in qpat.finditer(text) if re.match(r"\s*\|", text[m.end():])]
+    out = []
+    for idx, m in enumerate(cands):
+        stop = cands[idx + 1].start() if idx + 1 < len(cands) else len(text)
+        ans = re.sub(r"^\s*\|\s*", "", text[m.end():stop]).strip()
+        ans = ans.rstrip(" .;")
+        q = m.group(1).strip()
+        if q and ans:
+            out.append((q, ans + "."))
+    return out
 
 
 def main():
