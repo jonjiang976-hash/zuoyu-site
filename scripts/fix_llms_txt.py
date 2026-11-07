@@ -1,0 +1,64 @@
+# -*- coding: utf-8 -*-
+"""
+Rewrite llms.txt with real values and the pages that now exist.
+
+The published file still carried template placeholders ({{MOQ}}, {{EMAIL}}, ...)
+which is exactly the kind of thing an AI agent reads and cannot use.
+"""
+import io
+import os
+import sys
+
+ROOT = os.getcwd()
+
+CONTENT = """# Zuoyu Garment
+
+> Denim OEM/ODM manufacturer in Dayong, Zhongshan, Guangdong, China (founded 16 April 2019). Custom jeans, denim jackets, denim shirts, denim skirts and denim dresses for brand owners and importers in Europe, North America and Australia. Minimum order 150 pieces per style per colour. Samples in 10-15 days at USD 100 per style (credited against the bulk invoice). Bulk in 30-35 days after approval and deposit. FOB Shenzhen. SMETA audited (Sedex reference ZAA600231250), US CPSIA General Certificate of Conformity BYT26080342, RoHS certificate MTL24120600306R01. Does not hold OEKO-TEX Standard 100, GRS/RCS, amfori BSCI or ISO 9001, and does not claim them.
+
+## Products
+- [Jeans](https://zuoyugarment.com/jeans/): five-pocket, straight, slim, relaxed, wide-leg, baggy and utility jeans in rigid, comfort-stretch and high-stretch denim. USD 18-26 per piece FOB Shenzhen; women's listed styles from USD 13.99.
+- [Denim jackets](https://zuoyugarment.com/denim-jackets/): trucker, overshirt, chore, biker and shacket blocks. USD 16.57-18.67 per piece FOB Shenzhen.
+- [Denim shirts](https://zuoyugarment.com/denim-shirts/): button-down overshirts, work shirts, pullover tops and shirt-jackets in 4-8 oz shirting denim. USD 17.65-23.53 per piece.
+- [Denim dresses](https://zuoyugarment.com/denim-dresses/): shirt dresses, pinafores, slip-bib and tailored denim dresses. USD 14-19 per piece.
+- [Denim jackets and skirts](https://zuoyugarment.com/denim-jackets-and-skirts/): jackets, overshirts and skirts, including coordinated sets washed against one standard.
+
+## Ordering
+- [How to order](https://zuoyugarment.com/how-to-order/): four steps from brief to bulk, what to send for a quotation, payment terms (30/70), incoterm, inspection and packing.
+
+## Factory and evidence
+- [Factory and certifications](https://zuoyugarment.com/factory-certifications/): location, capacity, SMETA/GCC/RoHS references, and the list of certifications not held.
+- [Capabilities](https://zuoyugarment.com/capabilities/): what runs in-house (pattern, sample room, cutting, sewing, laundry, finishing, QC) and what is outsourced within the Dayong cluster.
+- [Cases](https://zuoyugarment.com/cases/): anonymised brief, constraint and outcome for three orders.
+- [About](https://zuoyugarment.com/about/): brand story, founding date and the decisions behind the factory layout.
+
+## Buying information
+- [Buyer FAQ](https://zuoyugarment.com/faq/): MOQ, price bands, lead times, payment terms, FOB and certification answers.
+- [Denim glossary](https://zuoyugarment.com/denim-glossary/): ounce weight, sanforised, laser and ozone wash, tech pack, AQL, MOQ, FOB, and what OEKO-TEX and SMETA actually certify.
+- [Contact](https://zuoyugarment.com/contact/): quotation request form, email, WhatsApp, factory address.
+
+## Guides
+- [What MOQ 150 actually means](https://zuoyugarment.com/blog/custom-denim-jacket-moq/): what 150 pieces covers, why the minimum exists, how to plan a first collection.
+- [OEKO-TEX Standard 100: what it covers and what we do not claim](https://zuoyugarment.com/blog/oeko-tex-standard-100-denim/): certificate scope, how to verify one, and the certifications this factory does not hold.
+- [Laser, ozone or stone wash](https://zuoyugarment.com/blog/denim-finishing-guide/): the four finishes, how to choose one, how a wash gets approved.
+- [Denim sampling timeline and costs](https://zuoyugarment.com/blog/denim-sampling-timeline/): 10-15 days, USD 100 credited, and the three input failures that send a sample back.
+- [Denim weight explained](https://zuoyugarment.com/blog/denim-weight-guide/): 10 oz vs 12 oz vs 14 oz and what the weight changes for a brand.
+
+## Notes
+- Contact: sales2zuoyu@aliyun.com · WhatsApp +86 138 2700 5889 · Phone +86 138 2700 5889
+- Address: 6/F, No. 168, Yongheng Road, Qinggang Community, Dayong Town, Zhongshan, Guangdong, China
+- Alibaba storefronts: https://zuoyufashion.en.alibaba.com/ (womenswear) and https://zuoyumen.en.alibaba.com/ (menswear)
+- Pricing is indicative and FOB Shenzhen; a costed quotation is issued against a tech pack or reference sample, with wash development priced as a separate line.
+- We do not publish the OEKO-TEX, GRS, BSCI or ISO 9001 claims that many competitor sites carry. Ask for the SMETA report reference (ZAA600231250) or the GCC (BYT26080342) instead.
+"""
+
+
+def main():
+    target = os.path.join(ROOT, "llms.txt")
+    io.open(target, "w", encoding="utf-8").write(CONTENT)
+    print("llms.txt rewritten:", len(CONTENT), "chars")
+    print("placeholders left:", CONTENT.count("{{"))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
