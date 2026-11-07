@@ -2,3 +2,5 @@
 # www -> apex and http -> https are a Redirect Rule on the zone, not here.
 /index.html / 301
 /privacy/ /privacy-policy/ 301
+/long-denim-coat/ /custom-eyelet-denim-jacket/ 301
+/maxi-denim-skirt/ /custom-long-denim-skirt/ 301
