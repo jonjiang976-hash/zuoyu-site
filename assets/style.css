@@ -394,3 +394,15 @@ dd{margin:.2rem 0 0;color:var(--ink-2)}
   .story{grid-template-columns:1fr}
   .story-figure{max-width:150px;margin:0}
 }
+
+/* --- buyer project snapshot + two-up photo grid --- */
+.snapshot{border:1px solid var(--line);background:#fbfaf8;padding:1.05rem 1.15rem;margin:1.7rem 0 2.1rem}
+.snapshot-title{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);margin:0 0 .55rem}
+.snapshot table{width:100%;border-collapse:collapse;font-size:.85rem}
+.snapshot th{text-align:left;width:30%;padding:.32rem .7rem .32rem 0;font-weight:600;color:var(--ink);vertical-align:top}
+.snapshot td{padding:.32rem 0;color:var(--ink-2);vertical-align:top}
+.gallery-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:700px){
+  .snapshot th{width:40%}
+  .gallery-2{grid-template-columns:1fr}
+}
