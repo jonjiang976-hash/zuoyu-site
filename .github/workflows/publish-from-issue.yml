@@ -70,10 +70,21 @@ jobs:
           # If the issue says "FILE: content/xxx.md", build from that file so the
           # markdown never passes through a browser clipboard (which loses '##').
           f=$(printf '%s\n' "$ISSUE_BODY" | grep -oE 'FILE:[[:space:]]*[A-Za-z0-9_./-]+' | head -1 | sed -E 's/FILE:[[:space:]]*//' || true)
+          # Browser uploads often land in the repo root instead of content/.
+          # If the given path is missing, look for the same file name anywhere.
+          if [ -n "$f" ] && [ ! -f "$f" ]; then
+            base=$(basename "$f")
+            alt=$(find . -name "$base" -not -path "./.git/*" | head -1)
+            if [ -n "$alt" ]; then
+              echo "path not found, using $alt instead of $f"
+              f="$alt"
+            fi
+          fi
           if [ -n "$f" ] && [ -f "$f" ]; then
             echo "building from file: $f"
             ISSUE_BODY=$(cat "$f") python scripts/publish.py
           else
+            echo "no article file found, treating the issue body as the article"
             python scripts/publish.py
           fi
 
