@@ -262,6 +262,32 @@ def related_for(slug, title):
             '      <ul class="related">\n' + "\n".join(items) + "\n      </ul>\n")
 
 
+def update_llms(slug, title, desc, date):
+    """把新文章追加进 llms.txt 的 Guides 段并刷新时间戳（失败不影响发布）"""
+    try:
+        p = os.path.join(ROOT, "llms.txt")
+        if not os.path.isfile(p):
+            return
+        t = io.open(p, encoding="utf-8").read()
+        url = "/blog/%s/" % slug
+        if url in t:
+            return
+        line = "- [%s](https://zuoyugarment.com%s): %s\n" % (
+            title, url, (desc or "").rstrip(". "))
+        m = re.search(r"\n## Guides\n", t)
+        if not m:
+            return
+        nxt = t.find("\n## ", m.end())
+        if nxt < 0:
+            nxt = len(t)
+        t = t[:nxt] + line.rstrip("\n") + "\n" + t[nxt:]
+        t = re.sub(r"Last updated: \d{4}-\d{2}-\d{2}", "Last updated: " + date, t)
+        io.open(p, "w", encoding="utf-8", newline="\n").write(t)
+        print("llms.txt updated")
+    except Exception as e:
+        print("llms.txt skipped:", e)
+
+
 def build_main():
     title = env("TITLE")
     body_md = env("BODY")
@@ -414,6 +440,8 @@ def build_main():
             print("sitemap updated")
         else:
             print("sitemap already contains this URL")
+
+    update_llms(slug, title, desc, date)
 
     # blog index: append a card if the file exists and link is missing
     idx = os.path.join(ROOT, "blog", "index.html")
