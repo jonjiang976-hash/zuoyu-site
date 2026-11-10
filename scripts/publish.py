@@ -192,6 +192,76 @@ def slugify(text):
     return re.sub(r"-{2,}", "-", s)[:70]
 
 
+# ---------- related reading（文章互链） ----------
+_REL_STOP = set("""the and for with from that this what when which your you our are was were will can does how why not
+into than then them they there their have has had been about over under more most less very also just
+denim jeans jean factory garment zuoyu custom guide buyer brand brands make made making order orders""".split())
+
+
+def _rel_plain(h):
+    t = re.sub(r"<script.*?</script>|<style.*?</style>", " ", h, flags=re.S | re.I)
+    t = re.sub(r"<[^>]+>", " ", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def _rel_tokens(s):
+    return set(w for w in re.findall(r"[a-z0-9-]{4,}", s.lower()) if w not in _REL_STOP)
+
+
+_EXTRA_LINKS = [
+    ("/how-to-order/", "How to order: step by step"),
+    ("/factory-certifications/", "Factory &amp; certifications: SMETA, GCC, RoHS"),
+    ("/denim-glossary/", "Denim glossary: oz, sanforised, laser and ozone"),
+    ("/jeans/", "Custom jeans: fabric, wash and price band"),
+]
+
+
+def related_for(slug, title):
+    """按关键词重叠自动挑 3 篇相关文章；目录为空或异常时返回空串"""
+    blog = os.path.join(ROOT, "blog")
+    docs = []
+    try:
+        for name in os.listdir(blog):
+            fp = os.path.join(blog, name, "index.html")
+            if name == slug or not os.path.exists(fp):
+                continue
+            h = io.open(fp, encoding="utf-8").read()
+            m = re.search(r"<title>(.*?)</title>", h, re.S)
+            t = _rel_plain(m.group(1)).split("|")[0].strip() if m else name
+            docs.append({"slug": name, "title": t, "body": _rel_plain(h)[:2600]})
+    except Exception:
+        return ""
+    if not docs:
+        return ""
+    n = len(docs)
+    df = {}
+    for d in docs:
+        for w in _rel_tokens(d["title"] + " " + d["body"]):
+            df[w] = df.get(w, 0) + 1
+    common = set(w for w, c in df.items() if c > max(2, int(n * 0.6)))
+    src = _rel_tokens(title)
+    scored = []
+    for d in docs:
+        cw = (src & _rel_tokens(d["title"] + " " + d["body"])) - common
+        if not cw:
+            continue
+        scored.append((len(cw) + 3 * len((src & _rel_tokens(d["title"])) - common), d["slug"], d["title"]))
+    scored.sort(key=lambda x: (-x[0], x[1]))
+    picks = [(s, t) for _, s, t in scored[:3]]
+    i = 0
+    while len(picks) < 3 and i < len(_EXTRA_LINKS):
+        path, label = _EXTRA_LINKS[i]
+        if all(p[0] != path for p in picks):
+            picks.append((path, label))
+        i += 1
+    items = []
+    for slug_or_path, label in picks:
+        href = slug_or_path if slug_or_path.startswith("/") else "/blog/%s/" % slug_or_path
+        items.append('        <li><a href="%s">%s</a></li>' % (href, label))
+    return ('      <div class="divider-label">Related reading</div>\n'
+            '      <ul class="related">\n' + "\n".join(items) + "\n      </ul>\n")
+
+
 def build_main():
     title = env("TITLE")
     body_md = env("BODY")
@@ -231,6 +301,8 @@ def build_main():
     }""" % ",".join(
             '{"@type":"Question","name":%s,"acceptedAnswer":{"@type":"Answer","text":%s}}'
             % (json.dumps(q), json.dumps(a)) for q, a in faqs)
+
+    faq_html = faq_html + related_for(slug, title)
 
     canonical = "%s/blog/%s/" % (DOMAIN, slug)
     jsonld = """{
