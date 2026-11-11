@@ -87,4 +87,4 @@ Can shrinkage be eliminated completely? | Not in cotton denim, but it can be con
 
 ### Publish date (optional)
 
-2026-11-11
+2026-11-11 
