@@ -571,8 +571,15 @@ def normalize_faq(text):
     return out
 
 
+def _clean_env_body(text):
+    """Strip a UTF-8 BOM and normalise Windows line endings."""
+    if not text:
+        return text
+    return text.replace("\ufeff", "").replace("\r\n", "\n").replace("\r", "\n")
+
+
 def main():
-    body = os.environ.get("ISSUE_BODY", "")
+    body = _clean_env_body(os.environ.get("ISSUE_BODY", ""))
     if not body.strip():
         print("ERROR: issue body is empty")
         return 1
