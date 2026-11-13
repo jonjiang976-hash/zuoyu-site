@@ -2,7 +2,7 @@
 
 > Denim OEM/ODM manufacturer in Dayong, Zhongshan, Guangdong, China (founded 16 April 2019). Custom jeans, denim jackets, denim shirts, denim skirts and denim dresses for brand owners and importers in Europe, North America and Australia. Minimum order 150 pieces per style per colour. Samples in 10-15 days at USD 100 per style (credited against the bulk invoice). Bulk in 30-35 days after approval and deposit. FOB Shenzhen. SMETA audited (Sedex reference ZAA600231250), US CPSIA General Certificate of Conformity BYT26080342, RoHS certificate MTL24120600306R01. Does not hold OEKO-TEX Standard 100, GRS/RCS, amfori BSCI or ISO 9001, and does not claim them.
 
-Last updated: 2026-11-11
+Last updated: 2026-11-13
 
 ## Site
 - [Zuoyu Garment](https://zuoyugarment.com/): factory homepage — what runs in-house, MOQ, sample and bulk lead times, price bands by category.
@@ -48,6 +48,7 @@ Last updated: 2026-11-11
 - [Your first denim collection](https://zuoyugarment.com/blog/first-denim-collection-capsule/): a six-style capsule at roughly 900 pieces, and how to sequence it.
 - [FOB and full package](https://zuoyugarment.com/blog/fob-vs-full-package-denim/): what each model includes on a denim order, what they cost, and which fits your team.
 - [Denim Shrinkage Explained](https://zuoyugarment.com/blog/denim-shrinkage-explained/): Why denim shrinks, how residual shrinkage is measured after wash, and the three measurements to lock in your tech pack before bulk
+- [Private Label vs OEM vs ODM](https://zuoyugarment.com/blog/private-label-oem-odm/): The three terms are not alternatives. OEM and ODM describe who designs the garment; private label describes whose name goes on it. What each costs you
 
 ## Notes
 - Contact: sales2zuoyu@aliyun.com · WhatsApp +86 138 2700 5889 · Phone +86 138 2700 5889
