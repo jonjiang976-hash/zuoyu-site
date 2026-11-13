@@ -21,6 +21,18 @@
 
 <link rel="canonical" href="https://zuoyugarment.com/contact/">
 <link rel="stylesheet" href="/assets/style.css">
+<style>
+  #inquiry-form button.btn{font-family:inherit;font-size:.74rem;cursor:pointer}
+  #inquiry-form button.btn[disabled]{opacity:.55;cursor:progress}
+  #inquiry-form .field input,#inquiry-form .field select,#inquiry-form .field textarea{font-family:inherit}
+  #inquiry-form .req{color:#a2662c}
+  #inquiry-form .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+  @media (max-width:640px){#inquiry-form .field-row{grid-template-columns:1fr}}
+  .hp-field{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+  #inquiry-msg.is-err{color:#a3321f;border-left-color:#a3321f}
+  #inquiry-msg.is-ok{color:#2c5d2c;border-left-color:#2c5d2c}
+  #inquiry-form.is-busy{opacity:.85}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,13 +48,14 @@
 
 
 <header class="site-head"><div class="wrap">
-  <a class="brand" href="/"><span class="brand-mark">Zuoyu</span><span class="brand-sub">Garment · Denim OEM</span></a>
+  <a class="brand" href="/"><span class="brand-mark" style="display:block"><img src="/assets/img/logo-zuoyu.png" alt="Zuoyu Garment — denim OEM manufacturer" width="487" height="96" style="display:block;height:1.95rem;width:auto" decoding="async"></span><span class="brand-sub">Garment · Denim OEM</span></a>
   <nav class="nav" aria-label="Main">
     <a href="/#products">Products</a>
     <a href="/capabilities/">Capabilities</a>
     <a href="/factory-certifications/">Factory &amp; Certifications</a>
     <a href="/cases/">Cases</a>
     <a href="/faq/">FAQ</a>
+    <a href="/blog/">Guides</a>
     <a href="/about/">About</a>
     <a href="/contact/" aria-current="page">Contact</a>
   </nav>
@@ -91,7 +104,72 @@
 
         <div>
           <h2>Quote request form</h2>
-          <div class="note" style="margin-top:0"><strong>Send the brief by email or WhatsApp</strong> — attach sketches, a size chart or photographs of a reference garment. We reply within one working day, quotations in two.<div class="hero-cta" style="margin-top:1.2rem"><a class="btn btn-primary" href="mailto:sales@zuoyugarment.com?subject=Denim%20quote%20request">Email the brief</a><a class="btn btn-ghost" href="https://wa.me/8613827005889">WhatsApp us</a></div></div>
+          <form class="form" id="inquiry-form" action="/api/inquiry" method="post" novalidate>
+            <div class="field">
+              <label for="iq-name">Name <span class="req">*</span></label>
+              <input id="iq-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="iq-company">Company</label>
+              <input id="iq-company" name="company" type="text" autocomplete="organization">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="iq-email">Email <span class="req">*</span></label>
+                <input id="iq-email" name="email" type="email" autocomplete="email" required inputmode="email">
+              </div>
+              <div class="field">
+                <label for="iq-country">Country</label>
+                <input id="iq-country" name="country" type="text" autocomplete="country-name">
+              </div>
+            </div>
+            <div class="field">
+              <label for="iq-whatsapp">WhatsApp <span style="text-transform:none;letter-spacing:0;font-weight:400">(optional)</span></label>
+              <input id="iq-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="iq-category">Category</label>
+                <select id="iq-category" name="category">
+                  <option value="">Select…</option>
+                  <option>Jeans</option>
+                  <option>Denim jackets</option>
+                  <option>Jacket &amp; skirt sets</option>
+                  <option>Denim dresses</option>
+                  <option>Denim shirts</option>
+                  <option>Mixed order</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="iq-quantity">Target quantity (pcs / style)</label>
+                <input id="iq-quantity" name="quantity" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="field">
+              <label for="iq-brief">Brief <span class="req">*</span></label>
+              <textarea id="iq-brief" name="brief" placeholder="Fabric, wash, size run, delivery window, destination." required></textarea>
+            </div>
+            <div class="hp-field" aria-hidden="true">
+              <label for="iq-hp">Leave this field empty</label>
+              <input id="iq-hp" name="_hp" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button class="btn btn-primary" type="submit" id="iq-submit">Send brief</button>
+            <p class="note" id="inquiry-msg" role="status" aria-live="polite">We reply within one working day. Your details are used only to answer this enquiry.</p>
+          </form>
+
+          <div id="inquiry-done" hidden>
+            <div class="note" style="border-left-color:#2c5d2c">
+              <strong>Thank you — your brief is in.</strong> We reply within one working day; a costed quotation in two. If it is urgent, message us on WhatsApp and quote your company name.
+            </div>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="https://wa.me/8613827005889">Continue on WhatsApp</a>
+              <a class="btn btn-ghost" href="/">Back to home</a>
+            </div>
+          </div>
+
+          <noscript>
+            <p class="note">JavaScript is off in this browser. Email the brief to <a href="mailto:sales@zuoyugarment.com?subject=Denim%20quote%20request">sales@zuoyugarment.com</a> or message <a href="https://wa.me/8613827005889">WhatsApp +86 138 2700 5889</a>.</p>
+          </noscript>
         </div>
       </div>
 
@@ -108,14 +186,16 @@
 
 <footer class="site-foot"><div class="wrap">
   <div>
-    <span class="brand-mark">Zuoyu</span>
+    <span class="brand-mark" style="display:block"><img src="/assets/img/logo-zuoyu.png" alt="Zuoyu Garment — denim OEM manufacturer" width="487" height="96" style="display:block;height:1.95rem;width:auto" decoding="async"></span>
     <p style="margin-top:.8rem">Zhongshan Zuoyu Garment Co., Ltd.<br>6/F, No. 168, Yongheng Road, Qinggang Community, Dayong Town, Zhongshan, Guangdong, China</p>
     <p><a href="mailto:sales@zuoyugarment.com">sales@zuoyugarment.com</a><br>+86 138 2700 5889<br>WhatsApp +86 138 2700 5889</p>
   </div>
   <div><h3>Products</h3><ul>
     <li><a href="/jeans/">Jeans</a></li>
-    <li><a href="/denim-jackets-and-skirts/">Denim jackets &amp; skirts</a></li>
+    <li><a href="/denim-jackets/">Denim jackets</a></li>
+    <li><a href="/denim-jackets-and-skirts/">Jacket &amp; skirt sets</a></li>
     <li><a href="/denim-dresses/">Denim dresses</a></li>
+    <li><a href="/denim-shirts/">Denim shirts</a></li>
     <li><a href="/denim-glossary/">Denim glossary</a></li>
   </ul></div>
   <div><h3>Company</h3><ul>
@@ -124,6 +204,8 @@
     <li><a href="/capabilities/">Capabilities</a></li>
     <li><a href="/cases/">Cases</a></li>
     <li><a href="/faq/">Buyer FAQ</a></li>
+    <li><a href="/how-to-order/">How to order</a></li>
+    <li><a href="/blog/">Guides</a></li>
   </ul></div>
   <div><h3>Contact</h3><ul>
     <li><a href="/contact/">Request a quote</a></li>
@@ -134,10 +216,116 @@
   </ul></div>
   <div class="legal" style="grid-column:1/-1;padding-left:0;padding-right:0">
     © 2026 Zuoyu Garment. Registered in Zhongshan, Guangdong, China. Business registration number shared on request.
-    OEKO-TEX Standard 100 certified; SMETA audited. We do not hold GRS, BSCI or ISO 9001.
+    SMETA audited (Sedex ZAA600231250) · US CPSIA GCC · RoHS. We do not hold OEKO-TEX, GRS, BSCI or ISO 9001.
   </div>
 </div></footer>
 
 <a class="wa" href="https://wa.me/8613827005889">WhatsApp us</a>
+
+<script>
+(function () {
+  var form = document.getElementById('inquiry-form');
+  if (!form) return;
+  var msg = document.getElementById('inquiry-msg');
+  var btn = document.getElementById('iq-submit');
+  var done = document.getElementById('inquiry-done');
+
+  function val(name) {
+    var el = form.elements[name];
+    return el ? String(el.value || '').trim() : '';
+  }
+  function setMsg(text, kind) {
+    msg.textContent = text;
+    msg.className = 'note' + (kind ? ' is-' + kind : '');
+  }
+  function mailtoLink() {
+    var subject = 'Website inquiry — ' + (val('company') || val('name') || 'denim quote');
+    var body = [
+      'Name: ' + val('name'),
+      'Company: ' + val('company'),
+      'Email: ' + val('email'),
+      'Country: ' + val('country'),
+      'WhatsApp: ' + val('whatsapp'),
+      'Category: ' + val('category'),
+      'Target quantity: ' + val('quantity'),
+      '',
+      'Brief:',
+      val('brief')
+    ].join('\r\n');
+    return 'mailto:sales@zuoyugarment.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+
+  var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[A-Za-z]{2,}$/;
+  var finished = false;
+
+  function fallbackToEmail(reason) {
+    if (finished) return;
+    finished = true;
+    form.classList.remove('is-busy');
+    btn.disabled = false;
+    btn.textContent = 'Send brief';
+    window.location.href = mailtoLink();
+    setMsg('Opened your email app with the brief filled in. If nothing opened, email sales@zuoyugarment.com directly, or use WhatsApp below.', 'err');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (finished) return;
+
+    if (!val('name') || !val('email') || !val('brief')) {
+      setMsg('Please fill in your name, email and the brief so we can reply.', 'err');
+      return;
+    }
+    if (!EMAIL_RE.test(val('email'))) {
+      setMsg('That email address does not look right — please check it.', 'err');
+      return;
+    }
+
+    var payload = {
+      name: val('name'),
+      company: val('company'),
+      email: val('email'),
+      country: val('country'),
+      whatsapp: val('whatsapp'),
+      category: val('category'),
+      quantity: val('quantity'),
+      brief: val('brief'),
+      _hp: val('_hp'),
+      page: location.href
+    };
+
+    setMsg('Sending…');
+    form.classList.add('is-busy');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    var timer = setTimeout(function () { fallbackToEmail('timeout'); }, 15000);
+
+    fetch('/api/inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (j) {
+        if (!j || !j.ok) throw new Error('rejected');
+        finished = true;
+        clearTimeout(timer);
+        form.hidden = true;
+        if (done) done.hidden = false;
+        if (msg) msg.hidden = true;
+        try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'inquiry_submitted' }); } catch (err) {}
+      })
+      .catch(function () {
+        clearTimeout(timer);
+        fallbackToEmail('error');
+      });
+  });
+})();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a59c7a40abcbdc9b',t:'MTc5NDU1OTI4OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a59c7a40abcbdc9b',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"186d8a6af8714a3fa6d13f585ac8b53c","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
