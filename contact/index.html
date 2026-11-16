@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact — Custom Denim Manufacturing Quote | Zuoyu Garment</title>
-<meta name="description" content="Request a denim quotation: email sales@zuoyugarment.com or WhatsApp +86 138 2700 5889. Replies within one working day; costed quotes in two.">
+<meta name="description" content="Request a denim quotation: email sales2zuoyu@aliyun.com or WhatsApp +86 138 2700 5889. Replies within one working day; costed quotes in two.">
 <meta name="theme-color" content="#12283f">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Zuoyu Garment">
 <meta property="og:title" content="Contact — Custom Denim Manufacturing Quote | Zuoyu Garment">
-<meta property="og:description" content="Request a denim quotation: email sales@zuoyugarment.com or WhatsApp +86 138 2700 5889. Replies within one working day; costed quotes in two.">
+<meta property="og:description" content="Request a denim quotation: email sales2zuoyu@aliyun.com or WhatsApp +86 138 2700 5889. Replies within one working day; costed quotes in two.">
 <meta property="og:url" content="https://zuoyugarment.com/contact/">
 <meta property="og:image" content="https://zuoyugarment.com/assets/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -79,7 +79,7 @@
           <table class="fact-table">
             <caption>How to reach us</caption>
             <tbody>
-              <tr><th>Email</th><td><a href="mailto:sales@zuoyugarment.com">sales@zuoyugarment.com</a></td></tr>
+              <tr><th>Email</th><td><a href="mailto:sales2zuoyu@aliyun.com">sales2zuoyu@aliyun.com</a></td></tr>
               <tr><th>WhatsApp</th><td><a href="https://wa.me/8613827005889">+86 138 2700 5889</a></td></tr>
               <tr><th>Phone</th><td>+86 138 2700 5889</td></tr>
               <tr><th>Address</th><td>6/F, No. 168, Yongheng Road, Qinggang Community, Dayong Town, Zhongshan, Guangdong, China</td></tr>
@@ -88,7 +88,6 @@
               <tr><th>Languages</th><td>English, Mandarin</td></tr>
             </tbody>
           </table>
-          <p class="note" style="margin-top:.9rem">Audit and certificate documents list <strong>+86 189 3874 2906</strong> as the registered contact. Both numbers reach the same sales office.</p>
 
           <h2 style="margin-top:2.4rem">What makes a quotation accurate</h2>
           <ul>
@@ -169,7 +168,7 @@
           </div>
 
           <noscript>
-            <p class="note">JavaScript is off in this browser. Email the brief to <a href="mailto:sales@zuoyugarment.com?subject=Denim%20quote%20request">sales@zuoyugarment.com</a> or message <a href="https://wa.me/8613827005889">WhatsApp +86 138 2700 5889</a>.</p>
+            <p class="note">JavaScript is off in this browser. Email the brief to <a href="mailto:sales2zuoyu@aliyun.com?subject=Denim%20quote%20request">sales2zuoyu@aliyun.com</a> or message <a href="https://wa.me/8613827005889">WhatsApp +86 138 2700 5889</a>.</p>
           </noscript>
         </div>
       </div>
@@ -189,7 +188,7 @@
   <div>
     <span class="brand-mark" style="display:block"><img src="/assets/img/logo-zuoyu.png" alt="Zuoyu Garment — denim OEM manufacturer" width="487" height="96" style="display:block;height:1.95rem;width:auto" decoding="async"></span>
     <p style="margin-top:.8rem">Zhongshan Zuoyu Garment Co., Ltd.<br>6/F, No. 168, Yongheng Road, Qinggang Community, Dayong Town, Zhongshan, Guangdong, China</p>
-    <p><a href="mailto:sales@zuoyugarment.com">sales@zuoyugarment.com</a><br>+86 138 2700 5889<br>WhatsApp +86 138 2700 5889</p>
+    <p><a href="mailto:sales2zuoyu@aliyun.com">sales2zuoyu@aliyun.com</a><br>+86 138 2700 5889<br>WhatsApp +86 138 2700 5889</p>
   </div>
   <div><h3>Products</h3><ul>
     <li><a href="/jeans/">Jeans</a></li>
@@ -253,7 +252,7 @@
       'Brief:',
       val('brief')
     ].join('\r\n');
-    return 'mailto:sales@zuoyugarment.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    return 'mailto:sales2zuoyu@aliyun.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   }
 
   var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[A-Za-z]{2,}$/;
@@ -266,7 +265,7 @@
     btn.disabled = false;
     btn.textContent = 'Send brief';
     window.location.href = mailtoLink();
-    setMsg('Opened your email app with the brief filled in. If nothing opened, email sales@zuoyugarment.com directly, or use WhatsApp below.', 'err');
+    setMsg('Opened your email app with the brief filled in. If nothing opened, email sales2zuoyu@aliyun.com directly, or use WhatsApp below.', 'err');
   }
 
   form.addEventListener('submit', function (e) {
@@ -279,6 +278,10 @@
     }
     if (!EMAIL_RE.test(val('email'))) {
       setMsg('That email address does not look right — please check it.', 'err');
+      return;
+    }
+    if (val('brief').length < 10) {
+      setMsg('Please add a little more detail to the brief — fabric, wash, quantity or delivery window. Two or three lines is enough for us to quote a band.', 'err');
       return;
     }
 
@@ -327,6 +330,5 @@
   });
 })();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a59c7a40abcbdc9b',t:'MTc5NDU1OTI4OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a59c7a40abcbdc9b',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"186d8a6af8714a3fa6d13f585ac8b53c","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
