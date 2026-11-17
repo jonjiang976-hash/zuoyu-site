@@ -211,6 +211,7 @@
     <li><a href="/contact/">Request a quote</a></li>
     <li><a href="https://zuoyufashion.en.alibaba.com/" rel="noopener">Alibaba — womenswear</a></li>
       <li><a href="https://zuoyumen.en.alibaba.com/" rel="noopener">Alibaba — menswear</a></li>
+      <li><a href="https://www.made-in-china.com/showroom/4f23aa89cd6814b0" rel="noopener">Made-in-China storefront</a></li>
     <li><a href="/privacy-policy/">Privacy policy</a></li>
     <li><a href="/terms/">Terms</a></li>
   </ul></div>
@@ -268,6 +269,11 @@
     setMsg('Opened your email app with the brief filled in. If nothing opened, email sales2zuoyu@aliyun.com directly, or use WhatsApp below.', 'err');
   }
 
+  // 第一次开始填写即视为 quote_start（仅发一次）
+  form.addEventListener('input', function () {
+    if (window.zyEvt) window.zyEvt('quote_start');
+  }, { once: true });
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (finished) return;
@@ -320,6 +326,7 @@
         clearTimeout(timer);
         form.hidden = true;
         if (done) done.hidden = false;
+        if (window.zyEvt) window.zyEvt('quote_submit');
         if (msg) msg.hidden = true;
         try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'inquiry_submitted' }); } catch (err) {}
       })
@@ -330,5 +337,6 @@
   });
 })();
 </script>
+<script src="/assets/evt.js" defer></script>
 </body>
 </html>
