@@ -1,6 +1,6 @@
 ### Article title (English)
 
-EU Denim Orders: Buyer Checklist
+Denim Order Checklist: What EU Buyers Check
 
 ### URL slug (optional)
 
