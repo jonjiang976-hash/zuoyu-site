@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Denim Size Chart: EU/US/UK/JP Measurements | Zuoyu</title>
+<meta name="description" content="Body measurements in cm for six garment categories, with EU, US, UK and Japan conversions and the grading rules we cut from.">
+<meta name="theme-color" content="#12283f">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zuoyu Garment">
+<meta property="og:title" content="Denim Size Chart: EU/US/UK/JP Measurements">
+<meta property="og:description" content="Body measurements in cm for six garment categories, with EU, US, UK and Japan conversions and the grading rules we cut from.">
+<meta property="og:url" content="https://zuoyugarment.com/tools/denim-size-chart/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://zuoyugarment.com/tools/denim-size-chart/">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "name": "Denim size chart: EU, US, UK and Japan",
+   "url": "https://zuoyugarment.com/tools/denim-size-chart/",
+   "description": "Body measurements in cm for six garment categories, with EU, US, UK and Japan conversions and the grading rules we cut from.",
+   "publisher": {
+    "@id": "https://zuoyugarment.com/#organization"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://zuoyugarment.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Tools",
+     "item": "https://zuoyugarment.com/tools/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Denim size chart",
+     "item": "https://zuoyugarment.com/tools/denim-size-chart/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What size chart does a Chinese denim factory grade from?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "We grade from our own base blocks and publish the EU, US, UK and Japan conversions with body measurements in centimetres for six categories: women's tops, trousers, shorts and skirts, and men's tops and jeans. Letter sizes have no official international definition, so a brand's own size chart overrides ours."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why does the same letter size fit differently between brands?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Letter sizes are not standardised and each brand shifts its base pattern. Compare the body measurements in centimetres with your own size chart rather than the letter."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you cut to our size chart or yours?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "We cut to yours. These tables are the starting point we quote from and the range we can grade across without re-blocking. If your chart sits between two rows, we grade to yours."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is the grading tolerance?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "About 0.5 cm on body measurements and 0.3 cm on shoulder width, measured on the sealed approved sample before bulk. If the sample measures outside tolerance, we re-cut before production."
+     }
+    }
+   ]
+  }
+ ]
+}</script>
+<style>
+  .toolgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start;margin:1.2rem 0}
+  @media(max-width:760px){.toolgrid{grid-template-columns:1fr}}
+  .toolbox{background:var(--canvas-2);border:1px solid #e3e3dd;border-radius:6px;padding:1.1rem 1.2rem}
+  .toolbox h3{margin-top:0}
+  .toolbox label{display:block;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:#666;margin:.7rem 0 .2rem}
+  .toolbox input[type=number],.toolbox select{width:100%;padding:.5rem .6rem;border:1px solid #cfcfc7;border-radius:4px;font:inherit;background:#fff}
+  .toolbox input[type=range]{width:100%}
+  .out{margin-top:1rem;border-top:1px solid #dcdcd4;padding-top:.8rem}
+  .out div{display:flex;justify-content:space-between;gap:1rem;padding:.28rem 0;font-size:.95rem}
+  .out b{font-variant-numeric:tabular-nums}
+  .warn{margin-top:.8rem;padding:.6rem .7rem;border-left:3px solid #b4552b;background:#fdf4ef;font-size:.88rem;color:#7a3a1d}
+  .cls{width:100%;border-collapse:collapse;margin-top:.6rem;font-size:.9rem}
+  .cls th,.cls td{border-bottom:1px solid #e3e3dd;padding:.35rem .2rem;text-align:left}
+  .cls tr.hit{background:#f2f6f8;font-weight:600}
+  .tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.6rem 0 0}
+  .tabs a{padding:.5rem .9rem;border:1px solid #cfcfc7;border-radius:4px;text-decoration:none;font-size:.9rem}
+  .tabs a:hover{background:var(--canvas-2)}
+  .size-table{width:auto;max-width:100%;border-collapse:collapse;table-layout:auto;margin:.4rem 0 1.2rem}
+  .size-table caption{caption-side:top;text-align:left;text-transform:none;letter-spacing:0;font-size:.82rem;color:#666;padding:.2rem 0 .55rem}
+  .size-table th,.size-table td{padding:.42rem .5rem;border-bottom:1px solid #e3e3dd;font-size:.88rem;text-align:left;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .size-table tbody th{font-weight:600}
+  .size-table tr.hit{background:#f2f6f8}
+  .size-table tr.hit th{font-weight:700}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+  .toolgrid,.toolbox,.out{min-width:0}
+  .toolbox input,.toolbox select{box-sizing:border-box;max-width:100%%}
+  h1,h2{overflow-wrap:anywhere}
+  .row3{display:flex;gap:.5rem}
+  .row3 input{flex:1 1 0;min-width:0}
+</style>
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="/"><span class="brand-mark" style="display:block"><img src="/assets/img/logo-zuoyu.png" alt="Zuoyu Garment — denim OEM manufacturer" width="487" height="96" style="display:block;height:1.95rem;width:auto" decoding="async"></span><span class="brand-sub">Garment · Denim OEM</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="/#products" aria-current="page">Products</a>
+    <a href="/capabilities/">Capabilities</a>
+    <a href="/factory-certifications/">Factory &amp; Certifications</a>
+    <a href="/cases/">Cases</a>
+    <a href="/faq/">FAQ</a>
+          <a href="/tools/">Tools</a>
+    <a href="/blog/">Guides</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+  <a class="head-cta" href="/contact/">Request a quote</a>
+</div></header>
+
+<main>
+  <div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/tools/">Tools</a><span>/</span>Size chart</nav></div>
+  <div class="page-head"><div class="wrap">
+    <p class="eyebrow">Tool</p>
+    <h1>Denim size chart: EU, US, UK and Japan</h1>
+    <p class="lede" style="max-width:70ch">Body measurements in centimetres for six garment categories, graded from our base blocks. These are not an international standard &mdash; letter sizes are not defined anywhere &mdash; so treat this as the factory baseline and your own size chart as the override.</p>
+  </div></div>
+
+  <section><div class="wrap">
+    <h2>How the base blocks are graded</h2>
+    <p>One base pattern per category, graded up and down from it. The increments below are what our pattern room uses; the tolerances are what we hold the sealed sample to before bulk.</p>
+    <table class="fact-table"><caption>Increments and tolerances of our base blocks</caption><thead><tr><th>Measurement</th><th>Increment per size</th><th>Tolerance</th></tr></thead><tbody><tr><th>Chest / bust</th><td>4 cm</td><td>&plusmn;0.5 cm</td></tr><tr><th>Waist</th><td>4 cm</td><td>&plusmn;0.5 cm</td></tr><tr><th>Hip</th><td>5 cm</td><td>&plusmn;0.5 cm</td></tr><tr><th>Shoulder width</th><td>1 cm</td><td>&plusmn;0.3 cm</td></tr><tr><th>Back length</th><td>1 cm</td><td>&plusmn;0.5 cm</td></tr><tr><th>Inseam</th><td>regular / long split</td><td>&plusmn;0.5 cm</td></tr></tbody></table>
+    <p>Measurements are taken on the body, not on a flat garment. If your size chart differs from this one, yours wins: we re-grade to your chart rather than quoting against ours.</p>
+  </div></section>
+
+  <section id="sizing"><div class="wrap">
+    <h2>Size charts by category</h2>
+    <p>These are the body measurements our base blocks are graded from &mdash; EU, US, UK, Japan and letter sizes side by side. They are not an international standard: letter sizes have no official definition, and retail brands shift the same label by several centimetres. Treat this as the factory baseline, and your own size chart as the override.</p>
+
+    <div class="toolbox" style="max-width:640px;margin:1.2rem 0">
+      <label for="sz-cat">Find a size</label>
+      <select id="sz-cat">
+        <option value="topsw" selected>Women &mdash; tops and jackets</option>
+        <option value="trouserw">Women &mdash; trousers and jeans</option>
+        <option value="shortsw">Women &mdash; shorts</option>
+        <option value="skirtw">Women &mdash; skirts</option>
+        <option value="topsm">Men &mdash; tops and jackets</option>
+        <option value="denimm">Men &mdash; jeans (W sizes)</option>
+      </select>
+      <label for="sz-q">Size in any system (e.g. 38, 6, M, W32, 11)</label>
+      <input id="sz-q" type="text" placeholder="38">
+      <div id="sz-out" class="out"><div><span>Match</span><b id="sz-match">&mdash;</b></div></div>
+    </div>
+
+    <h3>Women &mdash; tops and jackets</h3>
+    <div class="table-scroll"><table class="fact-table size-table" id="tbl-topsw">
+      <caption>Body measurements in cm. Bust, waist, shoulder width and back length.</caption>
+      <tbody>
+        <tr><th>EU</th><th>US</th><th>UK</th><th>JP</th><th>Letter</th><th>Bust</th><th>Waist</th><th>Shoulder</th><th>Back length</th></tr>
+            <tr data-eu="34" data-us="2" data-uk="6" data-jp="7" data-letter="XS"><th>34</th><td>2</td><td>6</td><td>7</td><td>XS</td><td>80–82</td><td>62–64</td><td>36.5–37</td><td>58</td></tr>
+            <tr data-eu="36" data-us="4" data-uk="8" data-jp="9" data-letter="S"><th>36</th><td>4</td><td>8</td><td>9</td><td>S</td><td>84–86</td><td>66–68</td><td>37.5–38</td><td>59</td></tr>
+            <tr data-eu="38" data-us="6" data-uk="10" data-jp="11" data-letter="M"><th>38</th><td>6</td><td>10</td><td>11</td><td>M</td><td>88–90</td><td>70–72</td><td>38.5–39</td><td>60</td></tr>
+            <tr data-eu="40" data-us="8" data-uk="12" data-jp="13" data-letter="M/L"><th>40</th><td>8</td><td>12</td><td>13</td><td>M/L</td><td>92–94</td><td>74–76</td><td>39.5–40</td><td>61</td></tr>
+            <tr data-eu="42" data-us="10" data-uk="14" data-jp="15" data-letter="L"><th>42</th><td>10</td><td>14</td><td>15</td><td>L</td><td>96–98</td><td>78–80</td><td>40.5–41</td><td>62</td></tr>
+            <tr data-eu="44" data-us="12" data-uk="16" data-jp="17" data-letter="XL"><th>44</th><td>12</td><td>16</td><td>17</td><td>XL</td><td>100–102</td><td>82–84</td><td>41.5–42</td><td>63</td></tr>
+            <tr data-eu="46" data-us="14" data-uk="18" data-jp="19" data-letter="XXL"><th>46</th><td>14</td><td>18</td><td>19</td><td>XXL</td><td>104–106</td><td>86–88</td><td>42.5–43</td><td>64</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Women &mdash; trousers and jeans</h3>
+    <div class="table-scroll"><table class="fact-table size-table" id="tbl-trouserw">
+      <caption>Body measurements in cm. Inseam is the regular/long split we grade to.</caption>
+      <tbody>
+        <tr><th>EU</th><th>US</th><th>UK</th><th>JP</th><th>Letter</th><th>Waist</th><th>Hip</th><th>Thigh</th><th>Inseam</th></tr>
+            <tr data-eu="34" data-us="2" data-uk="6" data-jp="7" data-letter="XS"><th>34</th><td>2</td><td>6</td><td>7</td><td>XS</td><td>62–64</td><td>88–90</td><td>52–54</td><td>78</td></tr>
+            <tr data-eu="36" data-us="4" data-uk="8" data-jp="9" data-letter="S"><th>36</th><td>4</td><td>8</td><td>9</td><td>S</td><td>66–68</td><td>92–94</td><td>54–56</td><td>78</td></tr>
+            <tr data-eu="38" data-us="6" data-uk="10" data-jp="11" data-letter="M"><th>38</th><td>6</td><td>10</td><td>11</td><td>M</td><td>70–72</td><td>96–98</td><td>56–58</td><td>79</td></tr>
+            <tr data-eu="40" data-us="8" data-uk="12" data-jp="13" data-letter="M/L"><th>40</th><td>8</td><td>12</td><td>13</td><td>M/L</td><td>74–76</td><td>100–102</td><td>58–60</td><td>79</td></tr>
+            <tr data-eu="42" data-us="10" data-uk="14" data-jp="15" data-letter="L"><th>42</th><td>10</td><td>14</td><td>15</td><td>L</td><td>78–80</td><td>104–106</td><td>60–62</td><td>80</td></tr>
+            <tr data-eu="44" data-us="12" data-uk="16" data-jp="17" data-letter="XL"><th>44</th><td>12</td><td>16</td><td>17</td><td>XL</td><td>82–84</td><td>108–110</td><td>62–64</td><td>80</td></tr>
+            <tr data-eu="46" data-us="14" data-uk="18" data-jp="19" data-letter="XXL"><th>46</th><td>14</td><td>18</td><td>19</td><td>XXL</td><td>86–88</td><td>112–114</td><td>64–66</td><td>81</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Women &mdash; shorts</h3>
+    <div class="table-scroll"><table class="fact-table size-table" id="tbl-shortsw">
+      <caption>Waist and hip in cm; inseam options 3 / 5 / 7 inch (8 / 13 / 18 cm).</caption>
+      <tbody>
+        <tr><th>EU</th><th>US</th><th>UK</th><th>JP</th><th>Letter</th><th>Waist</th><th>Hip</th><th>Inseam options</th></tr>
+            <tr data-eu="34" data-us="2" data-uk="6" data-jp="7" data-letter="XS"><th>34</th><td>2</td><td>6</td><td>7</td><td>XS</td><td>62–64</td><td>88–90</td><td>8 / 13 / 18</td></tr>
+            <tr data-eu="36" data-us="4" data-uk="8" data-jp="9" data-letter="S"><th>36</th><td>4</td><td>8</td><td>9</td><td>S</td><td>66–68</td><td>92–94</td><td>8 / 13 / 18</td></tr>
+            <tr data-eu="38" data-us="6" data-uk="10" data-jp="11" data-letter="M"><th>38</th><td>6</td><td>10</td><td>11</td><td>M</td><td>70–72</td><td>96–98</td><td>8 / 13 / 18</td></tr>
+            <tr data-eu="40" data-us="8" data-uk="12" data-jp="13" data-letter="M/L"><th>40</th><td>8</td><td>12</td><td>13</td><td>M/L</td><td>74–76</td><td>100–102</td><td>8 / 13 / 18</td></tr>
+            <tr data-eu="42" data-us="10" data-uk="14" data-jp="15" data-letter="L"><th>42</th><td>10</td><td>14</td><td>15</td><td>L</td><td>78–80</td><td>104–106</td><td>8 / 13 / 18</td></tr>
+            <tr data-eu="44" data-us="12" data-uk="16" data-jp="17" data-letter="XL"><th>44</th><td>12</td><td>16</td><td>17</td><td>XL</td><td>82–84</td><td>108–110</td><td>8 / 13 / 18</td></tr>
+            <tr data-eu="46" data-us="14" data-uk="18" data-jp="19" data-letter="XXL"><th>46</th><td>14</td><td>18</td><td>19</td><td>XXL</td><td>86–88</td><td>112–114</td><td>8 / 13 / 18</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Women &mdash; skirts</h3>
+    <div class="table-scroll"><table class="fact-table size-table" id="tbl-skirtw">
+      <caption>Waist and hip in cm; lengths for mini / above knee / midi / maxi.</caption>
+      <tbody>
+        <tr><th>EU</th><th>US</th><th>UK</th><th>JP</th><th>Letter</th><th>Waist</th><th>Hip</th><th>Lengths (cm)</th></tr>
+            <tr data-eu="34" data-us="2" data-uk="6" data-jp="7" data-letter="XS"><th>34</th><td>2</td><td>6</td><td>7</td><td>XS</td><td>62–64</td><td>88–90</td><td>40 / 55 / 75 / 95</td></tr>
+            <tr data-eu="36" data-us="4" data-uk="8" data-jp="9" data-letter="S"><th>36</th><td>4</td><td>8</td><td>9</td><td>S</td><td>66–68</td><td>92–94</td><td>40 / 55 / 75 / 95</td></tr>
+            <tr data-eu="38" data-us="6" data-uk="10" data-jp="11" data-letter="M"><th>38</th><td>6</td><td>10</td><td>11</td><td>M</td><td>70–72</td><td>96–98</td><td>40 / 55 / 75 / 95</td></tr>
+            <tr data-eu="40" data-us="8" data-uk="12" data-jp="13" data-letter="M/L"><th>40</th><td>8</td><td>12</td><td>13</td><td>M/L</td><td>74–76</td><td>100–102</td><td>40 / 55 / 75 / 95</td></tr>
+            <tr data-eu="42" data-us="10" data-uk="14" data-jp="15" data-letter="L"><th>42</th><td>10</td><td>14</td><td>15</td><td>L</td><td>78–80</td><td>104–106</td><td>40 / 55 / 75 / 95</td></tr>
+            <tr data-eu="44" data-us="12" data-uk="16" data-jp="17" data-letter="XL"><th>44</th><td>12</td><td>16</td><td>17</td><td>XL</td><td>82–84</td><td>108–110</td><td>40 / 55 / 75 / 95</td></tr>
+            <tr data-eu="46" data-us="14" data-uk="18" data-jp="19" data-letter="XXL"><th>46</th><td>14</td><td>18</td><td>19</td><td>XXL</td><td>86–88</td><td>112–114</td><td>40 / 55 / 75 / 95</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Men &mdash; tops and jackets</h3>
+    <div class="table-scroll"><table class="fact-table size-table" id="tbl-topsm">
+      <caption>Body measurements in cm. Chest, waist, shoulder width and back length.</caption>
+      <tbody>
+        <tr><th>Letter</th><th>EU</th><th>Chest</th><th>Waist</th><th>Shoulder</th><th>Back length</th></tr>
+            <tr data-letter="S" data-eu="44-46"><th>S</th><td>44-46</td><td>88–92</td><td>74–78</td><td>43–44</td><td>70</td></tr>
+            <tr data-letter="M" data-eu="48"><th>M</th><td>48</td><td>96–100</td><td>82–86</td><td>45–46</td><td>72</td></tr>
+            <tr data-letter="L" data-eu="50"><th>L</th><td>50</td><td>104–108</td><td>90–94</td><td>47–48</td><td>74</td></tr>
+            <tr data-letter="XL" data-eu="52"><th>XL</th><td>52</td><td>112–116</td><td>98–102</td><td>49–50</td><td>76</td></tr>
+            <tr data-letter="XXL" data-eu="54"><th>XXL</th><td>54</td><td>120–124</td><td>106–110</td><td>51–52</td><td>78</td></tr>
+            <tr data-letter="3XL" data-eu="56"><th>3XL</th><td>56</td><td>128–132</td><td>114–118</td><td>53–54</td><td>80</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Men &mdash; jeans (W sizes)</h3>
+    <div class="table-scroll"><table class="fact-table size-table" id="tbl-denimm">
+      <caption>Waist and hip in cm against the W code on the label.</caption>
+      <tbody>
+        <tr><th>W size</th><th>Waist</th><th>Hip</th><th>EU</th><th>JP</th></tr>
+            <tr data-w="28" data-eu="44" data-jp="S"><th>W28</th><td>71–73</td><td>90–92</td><td>44</td><td>S</td></tr>
+            <tr data-w="30" data-eu="46" data-jp="M"><th>W30</th><td>76–78</td><td>95–97</td><td>46</td><td>M</td></tr>
+            <tr data-w="32" data-eu="48" data-jp="L"><th>W32</th><td>81–83</td><td>100–102</td><td>48</td><td>L</td></tr>
+            <tr data-w="34" data-eu="50" data-jp="XL"><th>W34</th><td>86–88</td><td>105–107</td><td>50</td><td>XL</td></tr>
+            <tr data-w="36" data-eu="52" data-jp="2XL"><th>W36</th><td>91–93</td><td>110–112</td><td>52</td><td>2XL</td></tr>
+            <tr data-w="38" data-eu="54" data-jp="3XL"><th>W38</th><td>96–98</td><td>115–117</td><td>54</td><td>3XL</td></tr>
+            <tr data-w="40" data-eu="56" data-jp="4XL"><th>W40</th><td>101–103</td><td>120–122</td><td>56</td><td>4XL</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="note"><strong>How we grade:</strong> we cut to your size chart, not to ours. These tables are the starting point we quote from and the range we can grade across without re-blocking. If your chart sits between two rows, we grade to yours &mdash; the tables simply say what the base block covers.</p>
+  </div></section>
+
+  <section><div class="wrap">
+    <h2>How to measure</h2>
+    <ul>
+      <li><strong>Chest / bust</strong> &mdash; around the fullest part, tape level under the arms, arms down.</li>
+      <li><strong>Waist</strong> &mdash; at the narrowest point of the torso, measured on the body rather than over a waistband.</li>
+      <li><strong>Hip</strong> &mdash; around the fullest part of the seat, roughly 18&ndash;20 cm below the waist.</li>
+      <li><strong>Inseam</strong> &mdash; from the crotch seam to the desired hem, standing without shoes.</li>
+      <li><strong>Back length</strong> &mdash; centre back neck point down to the hem, without stretching the fabric.</li>
+    </ul>
+  </div></section>
+
+  <section><div class="wrap">
+    <h2>Size chart questions</h2>
+    <details><summary>What size chart does a Chinese denim factory grade from?</summary><p>We grade from our own base blocks and publish the EU, US, UK and Japan conversions with body measurements in centimetres for six categories: women's tops, trousers, shorts and skirts, and men's tops and jeans. Letter sizes have no official international definition, so a brand's own size chart overrides ours.</p></details>
+<details><summary>Why does the same letter size fit differently between brands?</summary><p>Letter sizes are not standardised and each brand shifts its base pattern. Compare the body measurements in centimetres with your own size chart rather than the letter.</p></details>
+<details><summary>Do you cut to our size chart or yours?</summary><p>We cut to yours. These tables are the starting point we quote from and the range we can grade across without re-blocking. If your chart sits between two rows, we grade to yours.</p></details>
+<details><summary>What is the grading tolerance?</summary><p>About 0.5 cm on body measurements and 0.3 cm on shoulder width, measured on the sealed approved sample before bulk. If the sample measures outside tolerance, we re-cut before production.</p></details>
+
+  </div></section>
+
+  <section class="cta-strip"><div class="wrap">
+    <div><h2>Send us your size chart</h2><p>Attach the chart you sell against and we will confirm which rows our blocks cover before sampling &mdash; and flag any row that needs re-blocking.</p></div>
+    <a class="btn btn-ghost" href="/contact/">Start a brief</a>
+  </div></section>
+</main>
+</main>
+
+<footer class="site-foot"><div class="wrap">
+  <div>
+    <span class="brand-mark" style="display:block"><img src="/assets/img/logo-zuoyu.png" alt="Zuoyu Garment — denim OEM manufacturer" width="487" height="96" style="display:block;height:1.95rem;width:auto" decoding="async"></span>
+    <p style="margin-top:.8rem">Zhongshan Zuoyu Garment Co., Ltd.<br>6/F, No. 168, Yongheng Road, Qinggang Community, Dayong Town, Zhongshan, Guangdong, China</p>
+    <p><a href="mailto:sales2zuoyu@aliyun.com">sales2zuoyu@aliyun.com</a><br>+86 138 2700 5889<br>WhatsApp +86 138 2700 5889</p>
+  </div>
+  <div><h3>Products</h3><ul>
+    <li><a href="/jeans/">Jeans</a></li>
+    <li><a href="/denim-jackets/">Denim jackets</a></li>
+    <li><a href="/denim-jackets-and-skirts/">Jacket &amp; skirt sets</a></li>
+    <li><a href="/denim-dresses/">Denim dresses</a></li>
+    <li><a href="/denim-shirts/">Denim shirts</a></li>
+    <li><a href="/denim-glossary/">Denim glossary</a></li>
+  </ul></div>
+  <div><h3>Company</h3><ul>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/factory-certifications/">Factory &amp; certifications</a></li>
+    <li><a href="/capabilities/">Capabilities</a></li>
+    <li><a href="/cases/">Cases</a></li>
+    <li><a href="/faq/">Buyer FAQ</a></li>
+    <li><a href="/how-to-order/">How to order</a></li>
+    <li><a href="/blog/">Guides</a></li>
+  </ul></div>
+  <div><h3>Contact</h3><ul>
+    <li><a href="/contact/">Request a quote</a></li>
+    <li><a href="https://zuoyufashion.en.alibaba.com/" rel="noopener">Alibaba — womenswear</a></li>
+      <li><a href="https://zuoyumen.en.alibaba.com/" rel="noopener">Alibaba — menswear</a></li>
+      <li><a href="https://www.made-in-china.com/showroom/zuoyugarment" rel="noopener">Made-in-China storefront</a></li>
+    <li><a href="/privacy-policy/">Privacy policy</a></li>
+    <li><a href="/terms/">Terms</a></li>
+  </ul></div>
+  <div class="legal" style="grid-column:1/-1;padding-left:0;padding-right:0">
+    © 2026 Zuoyu Garment. Registered in Zhongshan, Guangdong, China. Business registration number shared on request.
+    SMETA audited (Sedex ZAA600231250) · US CPSIA GCC · RoHS. We do not hold OEKO-TEX, GRS, BSCI or ISO 9001.
+  </div>
+</div></footer>
+
+<script>
+(function(){
+  var cat = document.getElementById("sz-cat"), q = document.getElementById("sz-q"),
+      out = document.getElementById("sz-out"), matchEl = document.getElementById("sz-match");
+  if (!cat || !q) { return; }
+  var labels = {eu:"EU", us:"US", uk:"UK", jp:"JP", letter:"Letter", w:"W"};
+  function run(){
+    var table = document.getElementById("tbl-" + cat.value);
+    if (!table) { return; }
+    Array.prototype.forEach.call(table.querySelectorAll("tbody tr"), function(tr){ tr.classList.remove("hit"); });
+    var v = q.value.trim().toUpperCase().replace(/^W/, "").replace(/\s+/g, "");
+    if (!v) { matchEl.textContent = "\u2014"; return; }
+    var hit = null, hitKey = "";
+    Array.prototype.forEach.call(table.querySelectorAll("tbody tr"), function(tr){
+      if (hit) { return; }
+      ["eu","us","uk","jp","letter","w"].forEach(function(k){
+        if (hit) { return; }
+        var dv = tr.getAttribute("data-" + k);
+        if (dv && dv.toUpperCase() === v) { hit = tr; hitKey = k; }
+      });
+    });
+    if (!hit) { matchEl.textContent = "no match in this table"; return; }
+    hit.classList.add("hit");
+    var cells = Array.prototype.map.call(hit.children, function(c){ return c.textContent.trim(); });
+    var head = Array.prototype.map.call(table.querySelectorAll("tbody tr:first-child th"), function(c){ return c.textContent.trim(); });
+    var pairs = [];
+    for (var i = 0; i < cells.length && i < head.length; i++) {
+      if (cells[i]) { pairs.push(head[i] + " " + cells[i]); }
+    }
+    matchEl.textContent = pairs.join("  \u00b7  ");
+  }
+  cat.addEventListener("change", run);
+  q.addEventListener("input", run);
+})();
+</script>
+<script src="/assets/evt.js" defer></script>
+</body>
+
+</html>
