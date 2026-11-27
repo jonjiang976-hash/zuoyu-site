@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Denim Tools: Costing, oz to GSM, Cartons, Sizes | Zuoyu</title>
-<meta name="description" content="Four free tools for denim buyers: fabric consumption and cost, oz to gsm, carton and container loading, and EU/US/UK/Japan size conversion.">
+<title>Denim Tools: Costing, oz/GSM, Cartons & Size Chart | Zuoyu</title>
+<meta name="description" content="Four free denim tools: fabric consumption and cost, oz to gsm, carton and container loading, and an EU/US/UK/Japan size chart in cm.">
 <meta name="theme-color" content="#12283f">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -16,30 +16,87 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://zuoyugarment.com/tools/">
 <link rel="stylesheet" href="/assets/style.css">
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
   {
    "@type": "WebApplication",
-   "name": "Denim Costing Toolkit",
+   "name": "Denim Costing & Size Toolkit",
    "url": "https://zuoyugarment.com/tools/",
    "applicationCategory": "BusinessApplication",
    "operatingSystem": "Any",
-   "description": "Free calculators for denim buyers: fabric consumption and cost, oz to gsm conversion with denim weight classes, and carton CBM with container loading and freight per piece.",
-   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-   "publisher": {"@id": "https://zuoyugarment.com/#organization"}
+   "description": "Free calculators for denim buyers: fabric consumption and cost, oz to gsm conversion with denim weight classes, carton CBM with container loading and freight per piece, and an EU/US/UK/Japan size chart with body measurements in cm.",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "publisher": {
+    "@id": "https://zuoyugarment.com/#organization"
+   },
+   "featureList": [
+    "Fabric consumption and cost per garment",
+    "oz/yd2 to g/m2 with denim weight classes",
+    "Carton CBM, container loading and freight per piece",
+    "EU/US/UK/Japan size conversion for six garment categories"
+   ]
   },
   {
    "@type": "BreadcrumbList",
    "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://zuoyugarment.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://zuoyugarment.com/tools/"}
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://zuoyugarment.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Tools",
+     "item": "https://zuoyugarment.com/tools/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What size chart does a Chinese denim factory grade from?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "We grade from our own base blocks and publish the EU, US, UK and Japan conversions with body measurements in centimetres for six categories: women's tops, trousers, shorts and skirts, and men's tops and jeans. Letter sizes have no official international definition, so a brand's own size chart overrides ours."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How many jeans fit in a 20ft container?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It depends on carton size. A 20ft container gives roughly 33 m3 of usable volume at about 85% fill; the carton tool converts your carton dimensions into pieces per container and freight per piece."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do I convert denim weight from oz to gsm?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "1 oz/yd2 equals 33.9 g/m2, so 12oz denim is about 407 g/m2 and 14oz about 475 g/m2. The oz to gsm tool also names the trade weight class for each value."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why does the same letter size fit differently between brands?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Letter sizes have no official definition and each brand shifts its base pattern. Compare the body measurements in centimetres with your own size chart rather than the letter."
+     }
+    }
    ]
   }
  ]
-}
-</script>
+}</script>
 <style>
   .toolgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start;margin:1.2rem 0}
   @media(max-width:760px){.toolgrid{grid-template-columns:1fr}}
