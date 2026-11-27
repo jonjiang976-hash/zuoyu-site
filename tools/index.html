@@ -120,6 +120,13 @@
   .size-table th,.size-table td{padding:.42rem .5rem;border-bottom:1px solid #e3e3dd;font-size:.88rem;text-align:left;white-space:nowrap;font-variant-numeric:tabular-nums}
   .size-table tbody th{font-weight:600}
   .size-table tr.hit{background:#f2f6f8}
+  .size-table{transition:opacity .15s}
+  .size-table.is-hidden{display:none}
+  .size-table.is-active{outline:2px solid #12283f;outline-offset:6px;border-radius:2px}
+  #sz-match{font-size:1.02rem;line-height:1.5}
+  #sz-showall{margin:.6rem 0 .2rem;padding:.45rem .9rem;border:1px solid #cfcfc7;background:#fff;border-radius:4px;font:inherit;font-size:.85rem;cursor:pointer}
+  #sz-showall:hover{background:var(--canvas-2)}
+
   .size-table tr.hit th{font-weight:700}
   .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 
@@ -293,7 +300,8 @@
       </select>
       <label for="sz-q">Size in any system (e.g. 38, 6, M, W32, 11)</label>
       <input id="sz-q" type="text" placeholder="38">
-      <div id="sz-out" class="out"><div><span>Match</span><b id="sz-match">&mdash;</b></div></div>
+            <button id="sz-showall" type="button">Show all tables</button>
+<div id="sz-out" class="out"><div><span>Match</span><b id="sz-match">&mdash;</b></div></div>
     </div>
 
     <h3>Women &mdash; tops and jackets</h3>
@@ -558,39 +566,92 @@
 </script>
 <script>
 (function(){
-  var cat = document.getElementById("sz-cat"), q = document.getElementById("sz-q"),
-      out = document.getElementById("sz-out"), matchEl = document.getElementById("sz-match");
+  "use strict";
+  var cat = document.getElementById("sz-cat"),
+      q = document.getElementById("sz-q"),
+      matchEl = document.getElementById("sz-match"),
+      showAll = document.getElementById("sz-showall");
   if (!cat || !q) { return; }
-  var labels = {eu:"EU", us:"US", uk:"UK", jp:"JP", letter:"Letter", w:"W"};
+
+  var tables = Array.prototype.slice.call(document.querySelectorAll("table.size-table"));
+  var KEYWORDS = {topsw:"Women tops", trouserw:"Women trousers", shortsw:"Women shorts",
+                  skirtw:"Women skirts", topsm:"Men tops", denimm:"Men jeans"};
+
+  function tableFor(id){ return document.getElementById("tbl-" + id); }
+
+  function showOnly(id){
+    tables.forEach(function(t){
+      t.classList.remove("is-active");
+      if (t.id === "tbl-" + id) { t.classList.remove("is-hidden"); }
+      else { t.classList.add("is-hidden"); }
+      var wrap = t.parentElement;
+      if (wrap && wrap.classList.contains("table-scroll")) {
+        wrap.style.display = (t.id === "tbl-" + id) ? "" : "none";
+      }
+    });
+    var t = tableFor(id);
+    if (t) {
+      t.classList.add("is-active");
+      var box = (t.parentElement && t.parentElement.classList.contains("table-scroll")) ? t.parentElement : t;
+      var y = box.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({top: y, behavior: "smooth"});
+    }
+  }
+
+  function showEveryTable(){
+    tables.forEach(function(t){ t.classList.remove("is-hidden"); t.classList.remove("is-active"); });
+    Array.prototype.forEach.call(document.querySelectorAll(".table-scroll"), function(w){ w.style.display = ""; });
+  }
+
   function run(){
-    var table = document.getElementById("tbl-" + cat.value);
+    var id = cat.value, table = tableFor(id);
     if (!table) { return; }
     Array.prototype.forEach.call(table.querySelectorAll("tbody tr"), function(tr){ tr.classList.remove("hit"); });
+
     var v = q.value.trim().toUpperCase().replace(/^W/, "").replace(/\s+/g, "");
-    if (!v) { matchEl.textContent = "\u2014"; return; }
-    var hit = null, hitKey = "";
+    if (!v) {
+      matchEl.textContent = "Type a size to see the full conversion, or scroll to the " + (KEYWORDS[id] || "") + " table.";
+      showOnly(id);
+      return;
+    }
+    var hit = null;
     Array.prototype.forEach.call(table.querySelectorAll("tbody tr"), function(tr){
       if (hit) { return; }
       ["eu","us","uk","jp","letter","w"].forEach(function(k){
         if (hit) { return; }
         var dv = tr.getAttribute("data-" + k);
-        if (dv && dv.toUpperCase() === v) { hit = tr; hitKey = k; }
+        if (dv && dv.toUpperCase() === v) { hit = tr; }
       });
     });
-    if (!hit) { matchEl.textContent = "no match in this table"; return; }
+    if (!hit) {
+      matchEl.textContent = "No " + v + " in the " + (KEYWORDS[id] || "chosen") + " table - try another category or another size system.";
+      showOnly(id);
+      return;
+    }
     hit.classList.add("hit");
-    var cells = Array.prototype.map.call(hit.children, function(c){ return c.textContent.trim(); });
     var head = Array.prototype.map.call(table.querySelectorAll("tbody tr:first-child th"), function(c){ return c.textContent.trim(); });
+    var cells = Array.prototype.map.call(hit.children, function(c){ return c.textContent.trim(); });
     var pairs = [];
     for (var i = 0; i < cells.length && i < head.length; i++) {
-      if (cells[i]) { pairs.push(head[i] + " " + cells[i]); }
+      if (!cells[i]) { continue; }
+      pairs.push((head[i] === "W size" ? "" : head[i] + " ") + cells[i]);
     }
     matchEl.textContent = pairs.join("  \u00b7  ");
+    showOnly(id);
   }
+
   cat.addEventListener("change", run);
   q.addEventListener("input", run);
+  if (showAll) {
+    showAll.addEventListener("click", function(){
+      showEveryTable();
+      matchEl.textContent = "\u2014";
+      q.value = "";
+    });
+  }
 })();
 </script>
+
 <script src="/assets/evt.js" defer></script>
 </body>
 
